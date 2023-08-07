@@ -12,18 +12,17 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Courses.hasMany(models.Enrolled, {
-        foreignKey: 'user_id',
-      });
-      Courses.hasMany(models.Enrolled, {
         foreignKey: 'course_id',
       });
+
+      // nuevo
       models.Enrolled.belongsTo(Courses, {
         foreignKey: 'course_id',
       });
     }
   }
   Courses.init({
-    tittle: DataTypes.STRING,
+    title: DataTypes.STRING,
     start_date: DataTypes.DATE,
     end_date: DataTypes.DATE,
   }, {

@@ -12,7 +12,7 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      lastName: {
+      lastname: {
         type: Sequelize.STRING
       },
       email: {
@@ -21,7 +21,7 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
-      role_id:{
+      role_id: {
         type: Sequelize.INTEGER,
         references:{
           model:'Roles',
@@ -29,14 +29,6 @@ module.exports = {
         },
         onDelete:'CASCADE',
         onUpdate:'CASCADE'
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
       }
     });
   },
