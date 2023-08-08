@@ -5,7 +5,7 @@ async function createUser(name, lastname, email, password1, password2) {
   // const user = new UsersModel(); NO
   // const user = new Users();
 
-  const user = await models.Users();
+  const user = await new models.Users();
 
   // const user = await new usersModel(); NO
   user.name = name;
