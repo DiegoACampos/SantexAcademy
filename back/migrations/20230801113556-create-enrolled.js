@@ -22,6 +22,14 @@ module.exports = {
           model:'Courses',
           key:'id'
         }
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       }
     });
   },

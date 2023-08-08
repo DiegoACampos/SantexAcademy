@@ -1,8 +1,8 @@
-const { Users } = require('../models/users.model');
+const models = require('../models');
 // const jwt = require('jsonwebtoken');
 
 async function login(name, password) {
-  await Users.findOne({
+  await models.Users.findOne({
     where: {
       name,
       password,
