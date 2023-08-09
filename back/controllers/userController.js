@@ -1,5 +1,13 @@
 const userService = require('../services/userService');
 
+async function createUser(req, res) {
+  const {
+    name, lastname, email, password,
+  } = req.body;
+  await userService.create(name, lastname, email, password);
+  res.status(201).send('Usuario creado correctamente');
+}
+
 async function loginUser(req, res, next) {
   const { name, password } = req.body;
   try {
@@ -10,4 +18,4 @@ async function loginUser(req, res, next) {
   }
 }
 
-module.exports = { loginUser };
+module.exports = { loginUser, createUser };

@@ -1,6 +1,18 @@
 // const jwt = require('jsonwebtoken');
 const usersModel = require('../models/users.model');
 
+async function create(name, lastname, email, password) {
+  const user = {
+    name,
+    lastname,
+    email,
+    password,
+    getconfig() {
+      console.log(user);
+    },
+  };
+}
+
 async function login(name, password) {
   await usersModel.findOne({
     where: {
@@ -22,4 +34,4 @@ async function login(name, password) {
   // }
 }
 
-module.exports = { login };
+module.exports = { login, create };
