@@ -1,0 +1,50 @@
+
+#seccion-de-iniciar-sesion{
+  margin-top: 120px;
+  & .contenedor-de-iniciar-sesion{
+    margin: 0px 150px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    & .parte-izquierda{
+      & .imagen-izquierda{
+        & img{
+          width: 75%;
+        }
+      }
+    }
+  }
+  & .parte-derecha{
+    & .campos-del-formulario{
+      & .emailInput{
+        margin-top: 20px;
+      }
+      & .passwordInput{
+        margin-top: 20px;
+      }
+      display: flex;
+      & form{
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      & .mat-label-email{
+        color:Blue;
+        font-size: 28px;
+      }
+      }
+    }
+  }
+}
+
+.mensaje-de-bienvenida{
+  & .messages{
+    & .active{
+      color: red;
+    }
+  }
+  & .is-valid{
+    border: 2px solid green;
+  }
+  & .is-invalid{
+    border: 2px solid red;
+  }
+}
