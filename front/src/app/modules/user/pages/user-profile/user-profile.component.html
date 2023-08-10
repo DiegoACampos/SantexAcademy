@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="photo">
+	<img [src]="url" alt="" class="image">
+	<input id="archivo" class="fancy-file" type="file" accept="image/png, image/jpeg" *ngIf="isMostrarBoton" (change)="seleccionarArchivo($event)">
+	<label *ngIf="isMostrarBoton" for="archivo">
+    <span class="fancy-file-boton">Cambiar</span>
+		<span class="fancy-file-nombre" [innerHTML]="nombreArchivo"></span>
+	</label>
+  </div>
+  <div class="profile" [formGroup]="formularioContacto">
+	<mat-form-field class="form-full-width">
+		<mat-label>Nombre</mat-label>
+		<input formControlName="nombre" matInput type="text" [(ngModel)]="nombre">
+	</mat-form-field>
+  <span *ngIf="this.formularioContacto.get('nombre')?.errors?.['maxlength']">
+    (Maximo 15 caracteres)
+  </span>
+	<mat-form-field class="form-full-width">
+		<mat-label>Apellido</mat-label>
+		<input formControlName="apellido" matInput type="text" [(ngModel)]="apellido">
+	</mat-form-field>
+  <span *ngIf="this.formularioContacto.get('apellido')?.errors?.['maxlength']">
+    (Maximo 15 caracteres)
+  </span>
+	<button mat-raised-button color="primary" *ngIf="!isMostrarBoton" (click)="habilitar()">Editar</button>
+	<button mat-raised-button color="primary" *ngIf="isMostrarBoton" (click)="enviar()">Guardar</button>
+  </div>
+</div>
