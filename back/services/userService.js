@@ -14,13 +14,13 @@ async function create(name, lastname, email, password, rolId) {
 }
 
 async function login(name, password) {
-  const data = await db.User.findOne({
+  const user = await db.User.findOne({
     where: {
       name,
       password,
     },
   });
-  return data;
+  return user;
   // if(!user){
   //     throw new Error(`Id y/o password incorrectos`)
   // }
@@ -35,4 +35,31 @@ async function login(name, password) {
   // }
 }
 
-module.exports = { login, create };
+async function edit(id, name, lastname, email, password, rolId) {
+  const user = await db.User.findByPk(id);
+  if (!user) {
+    throw new Error('Usuario no encontrado');
+  }
+  const updatedFields = {};
+  if (name) {
+    updatedFields.name = name;
+  }
+  if (lastname) {
+    updatedFields.lastname = lastname;
+  }
+  if (email) {
+    updatedFields.email = email;
+  }
+  if (password) {
+    updatedFields.password = password;
+  }
+  if (rolId) {
+    updatedFields.rolId = rolId;
+  }
+
+  await user.update(updatedFields);
+
+  return user;
+}
+
+module.exports = { login, create, edit };

@@ -12,10 +12,10 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
-      start_date: {
+      startDate: {
         type: Sequelize.DATE
       },
-      end_date: {
+      endDate: {
         type: Sequelize.DATE
       },
       createdAt: {

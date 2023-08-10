@@ -18,4 +18,17 @@ async function loginUser(req, res, next) {
   }
 }
 
-module.exports = { loginUser, createUser };
+async function editUser(req, res, next) {
+  const { id } = req.params;
+  const {
+    name, lastname, email, password, rolId,
+  } = req.body;
+  try {
+    await userService.edit(id, name, lastname, email, password, rolId);
+    res.status(200).send('Usuario editado correctamente');
+  } catch (error) {
+    next(error);
+  }
+}
+
+module.exports = { loginUser, createUser, editUser };
