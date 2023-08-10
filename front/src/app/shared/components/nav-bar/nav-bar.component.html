@@ -18,8 +18,11 @@
       </li>
     </ul>
     <div class="botones">
-      <button mat-raised-button color="accent" routerLink="/user/login">Entrar</button>
-      <button mat-raised-button color="primary" class="registro">Registrarse <img src="../../../../assets/2124045_arrow_essential_app_up_icon.svg" alt=""></button>
+      <span *ngIf="userLogin" style="margin-right: 5px;">Hola {{userData?.name}}</span>
+      <button mat-raised-button color="accent" routerLink="/user/login" *ngIf="!userLogin">Entrar</button>
+      <button mat-raised-button color="primary" class="registro" *ngIf="!userLogin">Registrarse <img src="../../../../assets/2124045_arrow_essential_app_up_icon.svg" alt=""></button>
+      <button mat-raised-button color="accent" routerLink="/dashboard" *ngIf="userLogin">A perfil</button>
+      <button mat-raised-button color="primary" *ngIf="userLogin" class="registro" (click)="logOut()">Salir</button>
     </div>
   </div>
 </mat-toolbar>

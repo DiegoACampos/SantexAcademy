@@ -24,11 +24,11 @@
               matInput
               type="email"
               placeholder="john@gmail.com"
-              formControlName="correoElectronico"
+              formControlName="name"
               class="emailInput"
               >
             </mat-form-field>
-            <div class="messages" [class.active]="formLogin.get('correoElectronico')?.invalid">
+            <div class="messages" [class.active]="formLogin.get('name')?.invalid">
               <mat-error *ngIf="emailField?.touched && emailField?.hasError('required')">
                 Campo requerido
               </mat-error>
@@ -45,10 +45,10 @@
 
             <mat-form-field [floatLabel]="'always'" class="password-label">
               <mat-label class="mat-label-email">Contraseña</mat-label>
-              <input matInput type="password" placeholder="********" formControlName="contraseña" class="passwordInput">
+              <input matInput type="password" placeholder="********" formControlName="password" class="passwordInput">
               <mat-icon matSuffix>visibility_off</mat-icon>
             </mat-form-field>
-            <div class="messages" [class.active]="formLogin.get('contraseña')?.invalid">
+            <div class="messages" [class.active]="formLogin.get('password')?.invalid">
               <mat-error *ngIf="passwordField?.touched && passwordField?.hasError('required')">
                 Campo requerido
               </mat-error>
