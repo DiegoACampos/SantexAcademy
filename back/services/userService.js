@@ -1,25 +1,26 @@
 // const jwt = require('jsonwebtoken');
-const usersModel = require('../models/users.model');
+const db = require('../models/index');
 
-async function create(name, lastname, email, password) {
-  const user = {
+async function create(name, lastname, email, password, rolId) {
+  const user = await db.User.create({
     name,
     lastname,
     email,
     password,
-    getconfig() {
-      console.log(user);
-    },
-  };
+    rolId,
+  });
+  const logedUser = user;
+  return logedUser;
 }
 
 async function login(name, password) {
-  await usersModel.findOne({
+  const data = await db.User.findOne({
     where: {
       name,
       password,
     },
   });
+  return data;
   // if(!user){
   //     throw new Error(`Id y/o password incorrectos`)
   // }
