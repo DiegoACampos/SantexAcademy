@@ -109,8 +109,8 @@ body{
 
 .footer{
   border-top: 1px solid black;
-  position: absolute;
-  bottom: 0px;
+  /* position: absolute;
+  bottom: 0px; */
   padding: 40px 0px 45px 0px;
   /* height: 340px; */
   width: 100%;

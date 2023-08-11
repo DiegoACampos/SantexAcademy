@@ -10,10 +10,18 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./modules/start/start.module').then(m => m.StartModule),
   },
+  // {
+  //   path: '**',
+  //   redirectTo: 'home'
+  // },
+  {
+    path: 'user',
+    loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule),
+  },
   {
     path: '**',
-    redirectTo: 'home'
-  },
+    redirectTo: 'user/signup'
+  }
 ];
 
 @NgModule({
