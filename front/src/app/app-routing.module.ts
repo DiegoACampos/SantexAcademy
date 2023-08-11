@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'user/login'
+    redirectTo: 'user/signup'
   }
 ];
 
