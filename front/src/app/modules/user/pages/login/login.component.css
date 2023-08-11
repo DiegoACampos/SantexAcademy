@@ -14,6 +14,28 @@
     }
   }
   & .parte-derecha{
+    & .formulario-para-iniciar-sesion{
+      & .mensajes{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 75%;
+      }
+      & .mensaje-de-bienvenida{
+        margin-bottom: 25px;
+        font-size: 18px;
+      }
+      & .titulo-principal{
+        margin-bottom: 20px;
+        & h4{
+          font-size: 51px;
+        }
+      }
+      & .subtitulo{
+        margin-bottom: 30px;
+        color: #5B5B5B;
+      }
+    }
     & .campos-del-formulario{
       & .emailInput{
         margin-top: 20px;
@@ -27,8 +49,8 @@
       flex-direction: column;
       width: 80%;
       & .mat-label-email{
-        color:Blue;
-        font-size: 28px;
+        color:black;
+        font-size: 24px;
       }
       }
     }

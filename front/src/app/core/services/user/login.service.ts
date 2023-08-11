@@ -19,12 +19,6 @@ type LoginReq = {
   password: string,
 }
 
-type LoginRes = {
-  token: string,
-  status: Int16Array,
-  message: string
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -41,20 +35,14 @@ export class LoginService {
 
   usuario_logueado?: Usuario;
 
-  data!: LoginReq;
-
-	login(dataReq: LoginReq) {
-    return this.apiService.post<any>('/api/user/login', dataReq).pipe(
+	login(dataReq: LoginReq):Observable<any> {
+    return this.apiService.post<any>('/api/home/login', dataReq).pipe(
       tap((userLoginData) => {
         this.currentUserData.next(userLoginData.user);
         this.currentUserLogin.next(true);
       })
     )
   }
-
-
-
-
 
   get userData():Observable<any>{
     return this.currentUserData.asObservable();

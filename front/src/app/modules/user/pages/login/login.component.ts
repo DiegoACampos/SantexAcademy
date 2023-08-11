@@ -51,11 +51,11 @@ export class LoginComponent implements OnInit{
 
       this.loginService.login(this.data).subscribe({
         next: (userLoginData) => {
-          console.log("user login data res: \n" + userLoginData.status)
-          console.log(userLoginData.message);
+          console.log("user login data response status: \n" + userLoginData.status)
           console.log(userLoginData);
         },
         error: (errorData) => {
+          console.log("Error en la peticion")
           console.log(errorData);
         },
         complete: () => {

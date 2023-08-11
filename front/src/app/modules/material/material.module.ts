@@ -22,7 +22,7 @@ const MATERIALCOMPONENTS = [
   MatFormFieldModule,
   MatIconModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
   MatRadioModule,
 ]
 

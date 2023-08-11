@@ -54,7 +54,7 @@ export class SignUpComponent implements OnInit {
           },
           error: (errorData) => {
             console.log(errorData);
-            throw "Error en la peticion";
+            //throw "Error en la peticion";
           },
           complete: () => {
             console.log("peticion completada")
@@ -63,6 +63,8 @@ export class SignUpComponent implements OnInit {
           }
         })
 
+        this.formSignUp.reset();
+        this.router.navigateByUrl('/user/accountCreated');
       } catch (error) {
         console.log(error);
       }

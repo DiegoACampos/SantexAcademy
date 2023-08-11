@@ -34,7 +34,6 @@
         }
       }
       & .radio-group{
-        border: 1px solid black;
         width: 45%;
         padding: 10px;
         display: flex;
@@ -45,6 +44,9 @@
         background-color: #FAF5DE;
         margin-bottom: 15px;
         align-self: center;
+        box-shadow: 9px 8px 9px -7px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 9px 8px 9px -7px rgba(0,0,0,0.75);
+        -moz-box-shadow: 9px 8px 9px -7px rgba(0,0,0,0.75);
         & .radio-input-1{
           /* border: 1px solid black; */
           border-radius: 33px;

@@ -37,6 +37,9 @@
   }
 
   & .botones{
+    & .userLogued{
+      margin-right: 15px;
+    }
     & .registro{
       margin-left: 15px;
       width: 40%;

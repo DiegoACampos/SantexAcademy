@@ -12,7 +12,7 @@ import { AccountCreatedComponent } from './pages/account-created/account-created
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
     SignUpComponent,
     AccountCreatedComponent
   ],
