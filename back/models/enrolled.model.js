@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Enrolled.belongsTo(models.User, {
+      models.User.belongsTo(Enrolled, {
         sourceKey: 'id',
       });
     }
