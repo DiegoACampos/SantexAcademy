@@ -14,10 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       models.Roles.hasMany(User, {
         foreignKey: 'rolId',
       });
-
-      models.Enrolled.hasMany(User, {
-        foreignKey: 'userId',
-      });
     }
   }
   User.init({
