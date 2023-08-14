@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      
+
       // nuevo
       models.Enrolled.belongsTo(Courses, {
         foreignKey: 'courseId',
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     endDate: DataTypes.DATE,
   }, {
     sequelize,
-    modelName: 'Courses',
+    modelName: 'Cours',
   });
   return Courses;
 };

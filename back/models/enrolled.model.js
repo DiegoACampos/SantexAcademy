@@ -14,11 +14,10 @@ module.exports = (sequelize, DataTypes) => {
       models.User.belongsTo(Enrolled, {
         foreignkey: 'userId',
       });
-      models.Courses.hasMany(Enrolled, {
+      models.Cours.hasMany(Enrolled, {
         foreignKey: 'courseId',
       });
     }
- 
   }
   Enrolled.init({
     userId: DataTypes.INTEGER,

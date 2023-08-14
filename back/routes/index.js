@@ -1,6 +1,5 @@
 const Express = require('express');
-const userRoutes = require('./user-routes');
-const couseRoutes = require('./course-routes');
+const userRoutes = require('./userRoutes');
 
 // Middlewares:
 const rootPath = require('../middleware/root_path.middleware');
@@ -9,10 +8,10 @@ const errors = require('../middleware/error_handler.middleware');
 const app = Express();
 
 // Rutas
-app.use('/user', userRoutes);
-app.use('/course', couseRoutes);
 
 // use=
+app.use('/home', userRoutes);
+
 app.use('/ping', (req, res) => {
   res.json({
     response: 'pong!',

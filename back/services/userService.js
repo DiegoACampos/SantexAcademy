@@ -1,5 +1,6 @@
 // const jwt = require('jsonwebtoken');
-const db = require('../models/index');
+const { Op } = require('sequelize');
+const db = require('../models');
 
 async function create(name, lastname, email, password, rolId) {
   const user = await db.User.create({
@@ -13,11 +14,13 @@ async function create(name, lastname, email, password, rolId) {
   return logedUser;
 }
 
-async function login(name, password) {
+async function login(email, password) {
   const user = await db.User.findOne({
-    where: {
-      name,
-      password,
+    whereItem: {
+      [Op.and]: [
+        { email },
+        { password },
+      ],
     },
   });
   return user;
@@ -41,21 +44,16 @@ async function edit(id, name, lastname, email, password, rolId) {
     throw new Error('Usuario no encontrado');
   }
   const updatedFields = {};
-  if (name) {
-    updatedFields.name = name;
-  }
-  if (lastname) {
-    updatedFields.lastname = lastname;
-  }
-  if (email) {
-    updatedFields.email = email;
-  }
-  if (password) {
-    updatedFields.password = password;
-  }
-  if (rolId) {
-    updatedFields.rolId = rolId;
-  }
+
+  updatedFields.name = name;
+
+  updatedFields.lastname = lastname;
+
+  updatedFields.email = email;
+
+  updatedFields.password = password;
+
+  updatedFields.rolId = rolId;
 
   await user.update(updatedFields);
 
