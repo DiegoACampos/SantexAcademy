@@ -11,9 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.User.belongsToMany(Courses, { 
-         foreignKey: 'courseId', 
-       });
+      
       // nuevo
       models.Enrolled.belongsTo(Courses, {
         foreignKey: 'courseId',
