@@ -1,0 +1,34 @@
+const userService = require('../services/userService');
+
+async function createUser(req, res) {
+  const {
+    name, lastname, email, password,
+  } = req.body;
+  await userService.create(name, lastname, email, password);
+  res.status(201).send('Usuario creado correctamente');
+}
+
+async function loginUser(req, res, next) {
+  const { name, password } = req.body;
+  try {
+    const result = await userService.login(name, password);
+    res.status(200).send(result);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function editUser(req, res, next) {
+  const { id } = req.params;
+  const {
+    name, lastname, email, password, rolId,
+  } = req.body;
+  try {
+    await userService.edit(id, name, lastname, email, password, rolId);
+    res.status(200).send('Usuario editado correctamente');
+  } catch (error) {
+    next(error);
+  }
+}
+
+module.exports = { loginUser, createUser, editUser };

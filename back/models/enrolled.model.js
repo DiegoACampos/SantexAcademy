@@ -9,10 +9,20 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+    static associate(models) {
+      // define association here
+      models.User.belongsTo(Enrolled, {
+        foreignkey: 'userId',
+      });
+      models.Courses.hasMany(Enrolled, {
+        foreignKey: 'courseId',
+      });
+    }
+ 
   }
   Enrolled.init({
-    user_id: DataTypes.INTEGER,
-    course_id: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER,
+    courseId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Enrolled',
