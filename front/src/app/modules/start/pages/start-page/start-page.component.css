@@ -1,5 +1,6 @@
 #seccion-principal{
-  margin-top: 80px;
+  margin-top: 140px;
+  margin-bottom: 200px;
   & .contenedor-seccion-principal{
     margin: 0px 160px;
     /* display: grid;
@@ -37,11 +38,6 @@
     }
 
     & .parte-derecha{
-      /* width: 100%;
-      display: flex;
-      align-content: flex-start;
-      justify-content: flex-start;
-      align-items: stretch; */
       & .pasos{
         /* width: 100%; */
         & ul{
@@ -76,5 +72,12 @@
         }
       }
     }
+  }
+}
+
+#info-section {
+  & .container{
+    margin: 0px 160px;
+
   }
 }

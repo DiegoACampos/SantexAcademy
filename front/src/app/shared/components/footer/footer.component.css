@@ -4,27 +4,15 @@ body{
 
 .contenedor{
   margin: 0px 150px;
-  /* display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between; */
-
-
-
-    display: grid;
-    grid-template-columns: 2fr repeat(2, 4fr) 2fr;
-    grid-template-rows: 1fr;
-    grid-column-gap: 5px;
-    grid-row-gap: 0px;
-
+  display: grid;
+  grid-template-columns: 2fr repeat(2, 4fr) 2fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 0px;
 
   & ul{
     display: flex;
     flex-direction: column;
-    /* flex-wrap: nowrap;
-    align-content: center;
-    justify-content: center;
-    align-items: center; */
     /* width: 100%; */
     padding: 0px;
     & li a:hover{
@@ -109,15 +97,11 @@ body{
 
 .footer{
   border-top: 1px solid black;
-  /* position: absolute;
-  bottom: 0px; */
   margin-top: 140px;
   padding: 40px 0px 45px 0px;
-  /* height: 340px; */
   width: 100%;
   background-color: #FAF5DE;
   & .ir-arriba{
-    /* border: 1px solid black; */
     background: #316BDB;
     padding: 12px;
     border-radius: 50%;

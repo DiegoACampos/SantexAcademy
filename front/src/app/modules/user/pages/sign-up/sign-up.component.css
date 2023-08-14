@@ -48,7 +48,6 @@
         -webkit-box-shadow: 9px 8px 9px -7px rgba(0,0,0,0.75);
         -moz-box-shadow: 9px 8px 9px -7px rgba(0,0,0,0.75);
         & .radio-input-1{
-          /* border: 1px solid black; */
           border-radius: 33px;
           padding: 8px 18px;
           background-color: #316BDB;

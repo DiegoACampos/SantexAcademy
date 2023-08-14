@@ -47,14 +47,14 @@ export class SignUpComponent implements OnInit {
       this.data = this.formSignUp.value as SignUpReq;
 
       try {
-        this.signUpService.login(this.data).subscribe({
+        this.signUpService.signUp(this.data).subscribe({
           next: (userSignUpData) => {
-            console.log("user login data res: \n")
+            console.log("user sign up data response: \n")
             console.log(userSignUpData);
           },
           error: (errorData) => {
             console.log(errorData);
-            //throw "Error en la peticion";
+            throw "Error en la peticion";
           },
           complete: () => {
             console.log("peticion completada")
@@ -62,14 +62,10 @@ export class SignUpComponent implements OnInit {
             this.router.navigateByUrl('/user/accountCreated');
           }
         })
-
-        this.formSignUp.reset();
-        this.router.navigateByUrl('/user/accountCreated');
       } catch (error) {
         console.log(error);
       }
     }else{
-      console.log("else part")
       this.formSignUp.markAllAsTouched();
     }
   }

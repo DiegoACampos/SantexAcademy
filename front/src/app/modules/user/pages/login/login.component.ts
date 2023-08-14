@@ -1,8 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/core/http/api.service';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { LoginService } from 'src/app/core/services/user/login.service';
 import { LoginReq } from 'src/app/core/interfaces/login-request-interface';
@@ -22,13 +20,11 @@ export class LoginComponent implements OnInit{
 
   constructor(
     private uFormBuilder: UntypedFormBuilder,
-    private http: HttpClient,
     private router: Router,
-    private apiService: ApiService,
     private loginService: LoginService
     ) {
     this.formLogin = this.uFormBuilder.group({
-      name: ['',[Validators.required, Validators.email,]],
+      email: ['',[Validators.required, Validators.email,]],
       password: ['',[Validators.required, Validators.minLength(8),]],
     })
   }
@@ -43,15 +39,14 @@ export class LoginComponent implements OnInit{
 
   saveForm(event: any) {
     if(this.formLogin.valid){
-      console.log("se ejecuto evento submit")
       console.log(this.formLogin.value)
-      console.log("acontinuacion debe estar la peticion post");
+      console.log("a continuacion sigue la peticion post");
 
       this.data = this.formLogin.value as LoginReq;
 
       this.loginService.login(this.data).subscribe({
         next: (userLoginData) => {
-          console.log("user login data response status: \n" + userLoginData.status)
+          console.log("user login data response status: " + userLoginData.status)
           console.log(userLoginData);
         },
         error: (errorData) => {
@@ -63,8 +58,7 @@ export class LoginComponent implements OnInit{
         }
       })
 
-      console.log("console log despues de la peticion post")
-      this.formLogin.reset();
+      //this.formLogin.reset();
       this.router.navigateByUrl('/home');
     }else{
       this.formLogin.markAllAsTouched();
@@ -80,14 +74,11 @@ export class LoginComponent implements OnInit{
   }
 
   get emailField(){
-    return this.formLogin.get('name');
+    return this.formLogin.get('email');
   }
 
   get passwordField(){
     return this.formLogin.get('password');
   }
 
-  // get isNameFieldValid() {
-  //   return this.nameField?.touched && this.nameField.valid;
-  // }
 }

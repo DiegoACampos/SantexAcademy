@@ -1,21 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { ApiService } from 'src/app/core/http/api.service';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, tap } from 'rxjs';
+import handleError from '../../exceptions/errors-handler';
 
-type Usuario = {
-  id: Int16Array,
-  nombre: string,
-  apellido: string,
-  email: string,
-  rol: Int16Array,
-  token: string
-}
 
 type LoginReq = {
-  name: string,
+  email: string,
   password: string,
 }
 
@@ -28,19 +18,18 @@ export class LoginService {
   currentUserData: BehaviorSubject<any> = new BehaviorSubject<any>({});
 
   constructor(
-    private http: HttpClient,
-    private router: Router,
     private apiService: ApiService
   ) { }
-
-  usuario_logueado?: Usuario;
 
 	login(dataReq: LoginReq):Observable<any> {
     return this.apiService.post<any>('/api/home/login', dataReq).pipe(
       tap((userLoginData) => {
-        this.currentUserData.next(userLoginData.user);
+        console.log("tap pipe:");
+        console.log(userLoginData)
+        this.currentUserData.next(userLoginData);
         this.currentUserLogin.next(true);
-      })
+      }),
+      catchError(handleError)
     )
   }
 

@@ -26,22 +26,17 @@
               matInput
               type="email"
               placeholder="john@gmail.com"
-              formControlName="name"
+              formControlName="email"
               class="emailInput"
               >
             </mat-form-field>
-            <div class="messages" [class.active]="formLogin.get('name')?.invalid">
+            <div class="messages" [class.active]="formLogin.get('email')?.invalid">
               <mat-error *ngIf="emailField?.touched && emailField?.hasError('required')">
                 Campo requerido
               </mat-error>
               <mat-error *ngIf="emailField?.touched && emailField?.hasError('email')">
                 Necesita formato de email
               </mat-error>
-              <!-- <p>Email is valid?: {{emailField?.valid}}</p> -->
-              <!-- <p [class.active]="nameField?.touched && nameField?.invalid">
-                <strong *ngIf="nameField?.touched && nameField?.hasError('required')">Campo requerido</strong>
-                <strong *ngIf="nameField?.hasError('maxlength')">Campo con maximo de 10 caracteres</strong>
-              </p> -->
             </div>
 
 
@@ -57,7 +52,6 @@
               <mat-error *ngIf="passwordField?.touched && passwordField?.hasError('minlength')">
                 Debe tener al menos 8 caracteres
               </mat-error>
-              <!-- <p>Password is valid?: {{passwordField?.valid}}</p> -->
             </div>
             <div class="checkbox-y-contraseña">
               <input type="checkbox" name="asd"><span>Recordarme</span>

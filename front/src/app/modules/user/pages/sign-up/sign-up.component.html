@@ -16,7 +16,7 @@
           <form [formGroup]="formSignUp" (ngSubmit)="sendForm($event)">
 
             <mat-radio-group formControlName="rolId" class="radio-group">
-              <mat-radio-button value="1" class="emailInput" class="radio-input-1" checked="true">Estudiante</mat-radio-button>
+              <mat-radio-button value="1" class="radio-input-1" checked="true">Estudiante</mat-radio-button>
               <mat-radio-button value="2" class="emailInput" class="radio-input-2">Profesor</mat-radio-button>
             </mat-radio-group>
 
@@ -24,17 +24,8 @@
               <mat-error  *ngIf="rolIdField?.touched && rolIdField?.hasError('required')">
                 Campo radio es requerido
               </mat-error>
-              <!-- <p>rol is valid?:{{rolField?.valid}}</p> -->
             </div>
 
-            <!-- <label for="">
-              <input type="radio" formControlName="rolField">
-              student
-            </label>
-            <label for="">
-              <input type="radio" formControlName="rolField">
-              professor
-            </label> -->
             <div class="subtitulo">
               <h2>¡Aprende y animate a crear tu propio emprendimiento!</h2>
             </div>
@@ -53,14 +44,6 @@
               <mat-error *ngIf="nameField?.touched && nameField?.hasError('required')">
                 Campo requerido
               </mat-error>
-              <!-- <mat-error *ngIf="emailField?.touched && emailField?.hasError('email')">
-                Necesita formato de email
-              </mat-error> -->
-              <!-- <p>Name is valid?: {{emailField?.valid}}</p> -->
-              <!-- <p [class.active]="nameField?.touched && nameField?.invalid">
-                <strong *ngIf="nameField?.touched && nameField?.hasError('required')">Campo requerido</strong>
-                <strong *ngIf="nameField?.hasError('maxlength')">Campo con maximo de 10 caracteres</strong>
-              </p> -->
             </div>
 
             <mat-form-field [floatLabel]="'always'" class="email-label" hideRequiredMarker="">
@@ -97,7 +80,6 @@
               <mat-error *ngIf="emailField?.touched && emailField?.hasError('email')">
                 Necesita formato de email
               </mat-error>
-              <!-- <p>Email is valid?: {{emailField?.valid}}</p> -->
             </div>
 
             <mat-form-field [floatLabel]="'always'" class="password-label" hideRequiredMarker="">
@@ -112,7 +94,6 @@
               <mat-error *ngIf="passwordField?.touched && passwordField?.hasError('minlength')">
                 Debe tener al menos 8 caracteres
               </mat-error>
-              <!-- <p>Password is valid?: {{passwordField?.valid}}</p> -->
             </div>
 
             <mat-form-field [floatLabel]="'always'" class="password-label" hideRequiredMarker="">
@@ -127,7 +108,6 @@
               <mat-error *ngIf="repeatPasswordField?.touched && repeatPasswordField?.hasError('minlength')">
                 Debe tener al menos 8 caracteres
               </mat-error>
-              <!-- <p>repeatPassword is valid?: {{repeatPasswordField?.valid}}</p> -->
             </div>
 
             <button mat-raised-button color="accent">Crear cuenta</button>
