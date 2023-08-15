@@ -8,7 +8,7 @@ const xss = require('xss-clean');
 const helmet = require('helmet');
 const session = require('express-session');
 // Winston logger Dependencies
-const cors = require('cors');
+// const cors = require('cors');
 const logger = require('./utils/winston.logger');
 
 // Models:
@@ -58,19 +58,19 @@ app.use(express.urlencoded(
 ));
 
 // Cors configuration
-const whitelist = process.env.CORS.split(' ');
+// const whitelist = process.env.CORS.split(' ');
 
-const corsOptions = {
-  origin(origin, callback) {
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      logger.api.error('Not allowed by CORS', { origin });
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin(origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1 || !origin) {
+//       callback(null, true);
+//     } else {
+//       logger.api.error('Not allowed by CORS', { origin });
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+// };
+// app.use(cors(corsOptions));
 
 if (config.environment === 'production') {
   app.set('trust proxy', 1); // trust first proxy

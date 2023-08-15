@@ -16,7 +16,7 @@ async function create(name, lastname, email, password, rolId) {
 
 async function login(email, password) {
   const user = await db.User.findOne({
-    whereItem: {
+    where: {
       [Op.and]: [
         { email },
         { password },
