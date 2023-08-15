@@ -37,8 +37,23 @@
       }
     }
     & .campos-del-formulario{
+      & .mat-form-field-wrapper{
+        padding: 0px 0px 10px 0px;
+
+        & .mat-form-field-subscript-wrapper{
+          color: blue;
+        }
+        & .ng-trigger{
+          color: blue;
+
+        }
+        & .mat-form-field-underline{
+          color: blue !important;
+        }
+      }
       & .emailInput{
         margin-top: 20px;
+        /* margin-bottom: 10px; */
       }
       & .passwordInput{
         margin-top: 20px;
@@ -53,6 +68,19 @@
         font-size: 24px;
       }
       }
+      & .checkbox-y-contraseña{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      & button{
+        width: 40%;
+        margin-top: 10px;
+        border-radius: 33px;
+        align-self: end;
+        padding: 4px 0px;
+        font-size: 16px;
+      }
     }
   }
 }
@@ -60,7 +88,7 @@
 .mensaje-de-bienvenida{
   & .messages{
     & .active{
-      color: red;
+      color: blue;
     }
   }
   & .is-valid{

@@ -17,7 +17,7 @@ export class SignupService {
 
   signUp(dataReq: SignUpReq) {
     //this.apiService.setHeader('Access-Control-Allow-Origin','http://localhost:4001/home/create')
-    return this.apiService.post<any>('/api/home/create', dataReq).pipe(
+    return this.apiService.post<any>('/api/user/create', dataReq).pipe(
       catchError(handleError)
     );
   }

@@ -22,7 +22,7 @@ export class LoginService {
   ) { }
 
 	login(dataReq: LoginReq):Observable<any> {
-    return this.apiService.post<any>('/api/home/login', dataReq).pipe(
+    return this.apiService.post<any>('/api/user/login', dataReq).pipe(
       tap((userLoginData) => {
         console.log("tap pipe:");
         console.log(userLoginData)

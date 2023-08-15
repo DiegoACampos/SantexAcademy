@@ -20,7 +20,7 @@
         </div>
         <div class="campos-del-formulario">
           <form [formGroup]="formLogin" (ngSubmit)="saveForm($event)">
-            <mat-form-field [floatLabel]="'always'" class="email-label">
+            <mat-form-field [floatLabel]="'always'" class="email-label correo" hideRequiredMarker="">
               <mat-label class="mat-label-email">Correo electrónico</mat-label>
               <input
               matInput
@@ -40,7 +40,7 @@
             </div>
 
 
-            <mat-form-field [floatLabel]="'always'" class="password-label">
+            <mat-form-field [floatLabel]="'always'" class="password-label" hideRequiredMarker="">
               <mat-label class="mat-label-email">Contraseña</mat-label>
               <input matInput type="password" placeholder="********" formControlName="password" class="passwordInput">
               <mat-icon matSuffix>visibility_off</mat-icon>
@@ -54,7 +54,9 @@
               </mat-error>
             </div>
             <div class="checkbox-y-contraseña">
-              <input type="checkbox" name="asd"><span>Recordarme</span>
+              <div class="checkbox-texto">
+                <input type="checkbox" name="asd"><span>Recordarme</span>
+              </div>
               <p>¿Olvidaste tu contraseña?</p>
             </div>
             <button mat-raised-button color="accent">Iniciar sesión</button>
