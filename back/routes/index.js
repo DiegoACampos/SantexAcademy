@@ -10,7 +10,7 @@ const app = Express();
 // Rutas
 
 // use=
-app.use('/home', userRoutes);
+app.use('/user', userRoutes);
 
 app.use('/ping', (req, res) => {
   res.json({

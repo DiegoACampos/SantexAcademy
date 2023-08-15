@@ -2,9 +2,9 @@ const userService = require('../services/userService');
 
 async function createUser(req, res) {
   const {
-    name, lastname, email, password,
+    name, lastname, email, password, rolId,
   } = req.body;
-  await userService.create(name, lastname, email, password);
+  await userService.create(name, lastname, email, password, rolId);
   res.status(201).send(JSON.stringify('Usuario creado correctamente'));
 }
 
@@ -12,7 +12,7 @@ async function loginUser(req, res, next) {
   const { email, password } = req.body;
   try {
     const result = await userService.login(email, password);
-    res.status(200).send(JSON.stringify(result));
+    res.status(200).send(result);
   } catch (error) {
     next(error);
   }
