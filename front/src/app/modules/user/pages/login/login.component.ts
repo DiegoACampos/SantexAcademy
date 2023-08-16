@@ -18,14 +18,16 @@ export class LoginComponent implements OnInit{
 
   formLogin: UntypedFormGroup;
 
+  token:string = "";
+
   constructor(
     private uFormBuilder: UntypedFormBuilder,
     private router: Router,
     private loginService: LoginService
     ) {
     this.formLogin = this.uFormBuilder.group({
-      email: ['',[Validators.required, Validators.email,]],
-      password: ['',[Validators.required, Validators.minLength(8),]],
+      email: ['admin@a',[Validators.required, Validators.email,]],
+      password: ['admin123',[Validators.required, Validators.minLength(8),]],
     })
   }
 
@@ -37,7 +39,7 @@ export class LoginComponent implements OnInit{
 
   data!: LoginReq;
 
-  saveForm(event: any) {
+  sendLoginForm(event: any) {
     if(this.formLogin.valid){
       console.log(this.formLogin.value)
       console.log("a continuacion sigue la peticion post");
@@ -48,6 +50,7 @@ export class LoginComponent implements OnInit{
         next: (userLoginData) => {
           console.log("user login data response status: " + userLoginData.status)
           console.log(userLoginData);
+          this.token = userLoginData.accessToken;
         },
         error: (errorData) => {
           console.log("Error en la peticion")

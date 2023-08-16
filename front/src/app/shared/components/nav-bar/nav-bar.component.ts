@@ -9,8 +9,10 @@ import { User } from 'src/app/core/interfaces/user-interface';
 })
 export class NavBarComponent implements OnInit {
 
-  userLogin:boolean = false;
-  userData?:User;
+  userLogin:boolean = false; //para saber si el usuario esta o no logueado, mejor nombre de variable?
+  userData?:any = {name: "ejemploNombre"}
+  userProfile:any;
+  authToken: string = "";
 
   constructor(private loginService: LoginService) { }
 
@@ -24,12 +26,22 @@ export class NavBarComponent implements OnInit {
     this.loginService.currentUserData.subscribe({
       next: (loguedUserData) => {
         this.userData = loguedUserData;
+        this.authToken = loguedUserData.accessToken;
       }
     })
   }
 
   logOut() {
     this.userLogin = !this.userLogin;
+  }
+
+  toProfile() {
+    console.log("profile in nav component")
+    this.loginService.profile(this.authToken).subscribe({
+      next: (profileResponse) => {
+        console.log(profileResponse)
+      }
+    })
   }
 
 }

@@ -1,4 +1,4 @@
-export interface UserWithRol{
+export interface User{
   id: Int16Array,
   name: string,
   lastname: string,
@@ -6,10 +6,10 @@ export interface UserWithRol{
   rol: Int16Array
 }
 
-export interface User {
-  id: Int16Array,
-  name: string,
-  lastname: string,
-  email: string,
-  password: string,
-}
+// export interface User {
+//   id: Int16Array,
+//   name: string,
+//   lastname: string,
+//   email: string,
+//   password: string,
+// }
