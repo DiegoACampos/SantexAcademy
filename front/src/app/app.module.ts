@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TimeInterceptor } from './core/interceptors/time.interceptor';
+// import { TimeInterceptor } from './core/interceptors/time.interceptor';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 
 @NgModule({
@@ -23,7 +23,7 @@ import { TokenInterceptor } from './core/interceptors/token.interceptor';
     HttpClientModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: TimeInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: TimeInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

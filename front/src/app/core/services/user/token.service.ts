@@ -7,8 +7,10 @@ export class TokenService {
 
   constructor() { }
 
-  saveToken(token: string){
+  saveToken(token: string, profileName: string){
     localStorage.setItem('token', token);
+    // localStorage.setItem('user', JSON.stringify(profileName));
+    localStorage.setItem('userName', profileName);
   }
 
   getToken() {
