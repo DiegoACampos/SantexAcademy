@@ -1,4 +1,4 @@
-// const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const { Op } = require('sequelize');
 const db = require('../models');
 
@@ -22,20 +22,20 @@ async function login(email, password) {
         { password },
       ],
     },
-  });
-  return user;
-  // if(!user){
-  //     throw new Error(`Id y/o password incorrectos`)
-  // }
+  })
+  if(!user){
+      throw new Error(JSON.stringify(`Id y/o password incorrectos`))
+  }
 
-  // const token = jwt.sign({
-  //     id:user.id,
-  //     name:user.name,
-  // }, 'claveUltraSecreta')
+  const token = jwt.sign({
+      id:user.id,
+      name:user.name,
+  }, 'claveSixCoders')
 
-  // return {
-  //     accesToken: token
-  // }
+  return {
+      accesToken: token,
+      user:user
+  }
 }
 
 async function edit(id, name, lastname, email, password, rolId) {
