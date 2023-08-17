@@ -4,6 +4,9 @@ const userRoutes = require('./userRoutes');
 // Middlewares:
 const rootPath = require('../middleware/root_path.middleware');
 const errors = require('../middleware/error_handler.middleware');
+const { initializeAuthetication } = require('../auth/auth');
+
+initializeAuthetication();
 
 const app = Express();
 

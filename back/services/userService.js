@@ -3,6 +3,7 @@ const { Op } = require('sequelize');
 const db = require('../models');
 
 async function create(name, lastname, email, password, rolId) {
+  // const hashedPassword = await bcrypt.hash(password,10)
   const user = await db.User.create({
     name,
     lastname,
@@ -22,20 +23,20 @@ async function login(email, password) {
         { password },
       ],
     },
-  })
-  if(!user){
-      throw new Error(JSON.stringify(`Id y/o password incorrectos`))
+  });
+  if (!user) {
+    throw new Error(JSON.stringify('Id y/o password incorrectos'));
   }
 
   const token = jwt.sign({
-      id:user.id,
-      name:user.name,
-  }, 'claveSixCoders')
+    id: user.id,
+    name: user.name,
+  }, 'claveSixCoders');
 
   return {
-      accesToken: token,
-      user:user
-  }
+    accesToken: token,
+    user: user.name,
+  };
 }
 
 async function edit(id, name, lastname, email, password, rolId) {
