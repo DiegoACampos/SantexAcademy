@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit{
         next: (userLoginData) => {
           console.log("user login data response status: " + userLoginData.status)
           console.log(userLoginData);
-          this.token = userLoginData.accessToken;
+          this.token = userLoginData.accesToken;
         },
         error: (errorData) => {
           console.log("Error en la peticion")

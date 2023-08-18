@@ -21,7 +21,8 @@ export class NavBarComponent implements OnInit {
   userProfile?:User;
   userName:any;
 
-  imgRta = '';
+  // imgRta = '';
+  imgRta:any;
   public files: any = [];
   previsualization: string = "";
   loading?: boolean;
@@ -65,12 +66,12 @@ export class NavBarComponent implements OnInit {
     localStorage.removeItem('userName');
   }
 
-  // toProfile() { // peticion para testear el acceso a rutas protegidas con el envio del token
-  //   this.loginService.profile().subscribe({
-  //     next: (profileResponse) => {
-  //       console.log(profileResponse)
-  //     }
-  //   })
-  // }
+  toProfile() { // peticion para testear el acceso a rutas protegidas con el envio del token
+    this.loginService.profile().subscribe({
+      next: (profileResponse) => {
+        console.log(profileResponse)
+      }
+    })
+  }
 
 }
