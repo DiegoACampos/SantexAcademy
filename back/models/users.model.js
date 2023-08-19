@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'rolId',
       });
 
-      // models.Enrolled.hasMany(User, {
-      //   foreignKey: 'userId',
+      // User.belongsToMany(models.Enrolled, {
+      //   through:Enrolled
       // });
       // User.hasMany(models.Enrolled, {
       //   foreignKey: 'userId',

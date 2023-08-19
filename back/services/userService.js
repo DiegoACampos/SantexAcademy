@@ -1,14 +1,16 @@
 const jwt = require('jsonwebtoken');
-const { Op } = require('sequelize');
+const bcrypt = require('bcrypt');
 const db = require('../models');
 
+const saltRound = 10;
+
 async function create(name, lastname, email, password, rolId) {
-  // const hashedPassword = await bcrypt.hash(password,10)
+  const passwordHash = await bcrypt.hash(password, saltRound);
   const user = await db.User.create({
     name,
     lastname,
     email,
-    password,
+    password: passwordHash,
     rolId,
   });
   const logedUser = user;
@@ -17,17 +19,16 @@ async function create(name, lastname, email, password, rolId) {
 
 async function login(email, password) {
   const user = await db.User.findOne({
-    where: {
-      [Op.and]: [
-        { email },
-        { password },
-      ],
-    },
+    where: { email },
   });
-  if (!user) {
-    throw new Error(JSON.stringify('Id y/o password incorrectos'));
-  }
 
+  if (!user) {
+    throw new Error(JSON.stringify('usuario no encontrado'));
+  }
+  const checkPassword = await bcrypt.compare(password, user.password);
+  if (!checkPassword) {
+    throw new Error(JSON.stringify('Contrasena incorrecta'));
+  }
   const token = jwt.sign({
     id: user.id,
     name: user.name,
@@ -35,14 +36,14 @@ async function login(email, password) {
 
   return {
     accesToken: token,
-    user: user.name,
+    user: db.User.name,
   };
 }
 
 async function edit(id, name, lastname, email, password, rolId) {
   const user = await db.User.findByPk(id);
   if (!user) {
-    throw new Error('Usuario no encontrado');
+    throw new Error(JSON.stringify('Usuario no encontrado'));
   }
   const updatedFields = {};
 
