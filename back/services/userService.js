@@ -41,6 +41,7 @@ async function login(email, password) {
 }
 
 async function edit(id, name, lastname, email, password, rolId) {
+  const passwordHash = await bcrypt.hash(password, saltRound);
   const user = await db.User.findByPk(id);
   if (!user) {
     throw new Error(JSON.stringify('Usuario no encontrado'));
@@ -53,7 +54,7 @@ async function edit(id, name, lastname, email, password, rolId) {
 
   updatedFields.email = email;
 
-  updatedFields.password = password;
+  updatedFields.password = passwordHash;
 
   updatedFields.rolId = rolId;
 
