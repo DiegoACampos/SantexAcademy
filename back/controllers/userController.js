@@ -2,9 +2,9 @@ const userService = require('../services/userService');
 
 async function createUser(req, res) {
   const {
-    name, lastname, email, password, rolId,
+    name, lastname, email, password, rolId, image,
   } = req.body;
-  await userService.create(name, lastname, email, password, rolId);
+  await userService.create(name, lastname, email, password, rolId, image);
   res.status(201).send(JSON.stringify('Usuario creado correctamente'));
 }
 
@@ -23,8 +23,9 @@ async function editUser(req, res, next) {
   const {
     name, lastname, email, password, rolId,
   } = req.body;
+  const { image } = req;
   try {
-    await userService.edit(id, name, lastname, email, password, rolId);
+    await userService.edit(id, name, lastname, email, password, rolId, image);
     res.status(200).send(JSON.stringify('Usuario editado correctamente'));
   } catch (error) {
     next(error);

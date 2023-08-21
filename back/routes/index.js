@@ -7,7 +7,6 @@ const errors = require('../middleware/error_handler.middleware');
 const { initializeAuthetication } = require('../auth/auth');
 
 initializeAuthetication();
-
 const app = Express();
 
 // Rutas

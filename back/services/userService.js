@@ -4,7 +4,7 @@ const db = require('../models');
 
 const saltRound = 10;
 
-async function create(name, lastname, email, password, rolId) {
+async function create(name, lastname, email, password, rolId, image) {
   const passwordHash = await bcrypt.hash(password, saltRound);
   const user = await db.User.create({
     name,
@@ -12,6 +12,7 @@ async function create(name, lastname, email, password, rolId) {
     email,
     password: passwordHash,
     rolId,
+    image,
   });
   const logedUser = user;
   return logedUser;
@@ -40,8 +41,9 @@ async function login(email, password) {
   };
 }
 
-async function edit(id, name, lastname, email, password, rolId) {
+async function edit(id, name, lastname, email, password, rolId, image) {
   const passwordHash = await bcrypt.hash(password, saltRound);
+  const imagePath = `./uploads/${Date.now()}${image}`;
   const user = await db.User.findByPk(id);
   if (!user) {
     throw new Error(JSON.stringify('Usuario no encontrado'));
@@ -58,8 +60,9 @@ async function edit(id, name, lastname, email, password, rolId) {
 
   updatedFields.rolId = rolId;
 
+  updatedFields.image = imagePath;
   await user.update(updatedFields);
-
+  console.log(imagePath);
   return user;
 }
 
