@@ -23,7 +23,8 @@ async function editUser(req, res, next) {
   const {
     name, lastname, email, password, rolId,
   } = req.body;
-  const { image } = req;
+  const { image } = req.file;
+  console.log(image);
   try {
     await userService.edit(id, name, lastname, email, password, rolId, image);
     res.status(200).send(JSON.stringify('Usuario editado correctamente'));

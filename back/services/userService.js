@@ -50,6 +50,8 @@ async function edit(id, name, lastname, email, password, rolId, image) {
   }
   const updatedFields = {};
 
+  updatedFields.image = imagePath;
+
   updatedFields.name = name;
 
   updatedFields.lastname = lastname;
@@ -60,7 +62,6 @@ async function edit(id, name, lastname, email, password, rolId, image) {
 
   updatedFields.rolId = rolId;
 
-  updatedFields.image = imagePath;
   await user.update(updatedFields);
   console.log(imagePath);
   return user;
